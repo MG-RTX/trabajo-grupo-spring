@@ -1,22 +1,30 @@
 package com.distribuida.bar_spring.model;
 
-import java.util.Date;
+import jakarta.persistence.*;
 
+import java.util.Date;
+@Entity
+@Table(name="pedidos")
 public class Pedido {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_pedido")
     private int idPedido;
+    @Column(name="fecha_pedido")
     private Date fechaPedido;
+    @Column(name="total")
     private Double total;
-    private String estado;
+    @ManyToOne
+    @JoinColumn(name="cliente_id")
     private cliente cliente;
 
     public Pedido(){}
 
-    public Pedido(int idPedido, Date fechaPedido, Double total, String estado, cliente cliente) {
+    public Pedido(int idPedido, Date fechaPedido, Double total, cliente cliente) {
         this.idPedido = idPedido;
         this.fechaPedido = fechaPedido;
         this.total = total;
-        this.estado = estado;
         this.cliente = cliente;
     }
 
@@ -44,14 +52,6 @@ public class Pedido {
         this.total = total;
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
     public cliente getCliente() {
         return cliente;
     }
@@ -66,7 +66,6 @@ public class Pedido {
                 "idPedido=" + idPedido +
                 ", fechaPedido=" + fechaPedido +
                 ", total=" + total +
-                ", estado='" + estado + '\'' +
                 ", cliente=" + cliente +
                 '}';
     }

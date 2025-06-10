@@ -1,12 +1,26 @@
 package com.distribuida.bar_spring.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name="detalles_pedido")
 public class DetallesPedido {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_detalle_pedido")
     private int idDetalle;
+    @Column(name="cantidad")
     private int cantidad;
+    @Column(name="precio_unitario")
     private Double precioUnitario;
+    @Column(name="subtotal")
     private Double subtotal;
+    @ManyToOne
+    @JoinColumn(name="pedido_id")
     private Pedido pedido;
+    @ManyToOne
+    @JoinColumn(name="producto_id")
     private Producto producto;
 
     public DetallesPedido() {
