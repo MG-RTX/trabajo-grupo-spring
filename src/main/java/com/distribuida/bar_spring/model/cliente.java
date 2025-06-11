@@ -1,23 +1,29 @@
 package com.distribuida.bar_spring.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.Date;
 
 
 @Entity
 @Table(name="clientes")
+@Data
 public class cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_cliente")
+    @Column(name="id_clientes")
     private int idCliente;
+
     @Column(name = "nombre")
     private String nombre;
+
     @Column(name = "correo")
     private String correo;
+
     @Column(name = "carrera")
     private String carrera;
+
     @Column(name = "fecha_registro")
     private Date fechaRegistro;
 

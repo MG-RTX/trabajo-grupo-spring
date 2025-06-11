@@ -3,10 +3,11 @@ package com.distribuida.bar_spring.service;
 import com.distribuida.bar_spring.dao.clienteRepository;
 import com.distribuida.bar_spring.model.cliente;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class clienteServiceImpl implements clienteService{
 
     @Autowired
