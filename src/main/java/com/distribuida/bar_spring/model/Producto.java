@@ -20,7 +20,7 @@ public class Producto {
     private Double precio;
 
     @Column(name="stock")
-    private int stock;
+    private int stock ;
 
     @ManyToOne
     @JoinColumn(name="categoria_id")
@@ -29,9 +29,9 @@ public class Producto {
 
     public Producto(){}
 
-    public Producto(int idProducto, String nombreProducto, Double precio, int stock, Categoria categoria) {
+    public Producto(int idProducto,  String nombreProducto, Double precio, int stock, Categoria categoria) {
         this.idProducto = idProducto;
-        this.nombreProducto = nombreProducto;
+        this.nombreProducto =  nombreProducto;
         this.precio = precio;
         this.stock = stock;
         this.categoria = categoria;
