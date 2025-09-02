@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Cliente {  // Cambiado a mayúscula
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_clientes")
+    @Column(name="id_cliente")
     private int idCliente;
 
     @Column(name = "nombre")
