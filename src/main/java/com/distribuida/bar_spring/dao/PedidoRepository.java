@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 public interface PedidoRepository extends JpaRepository<Pedido, Integer> {
 
@@ -13,4 +14,6 @@ public interface PedidoRepository extends JpaRepository<Pedido, Integer> {
     List<Pedido> findByTotalGreaterThan(Double totalMinimo);
 
     List<Pedido> findByClienteIdCliente(int idCliente);  // Esto está correcto si la relación se llama "cliente"
+
+    Optional<Pedido> findAllById(int idPedido);
 }

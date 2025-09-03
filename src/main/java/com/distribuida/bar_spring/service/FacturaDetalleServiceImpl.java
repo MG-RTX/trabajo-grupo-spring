@@ -1,0 +1,68 @@
+package com.distribuida.bar_spring.service;
+
+import com.distribuida.bar_spring.dao.FacturaDetalleRepository;
+import com.distribuida.bar_spring.dao.FacturaRepository;
+import com.distribuida.bar_spring.dao.PedidoRepository;
+import com.distribuida.bar_spring.model.Factura;
+import com.distribuida.bar_spring.model.FacturaDetalle;
+import com.distribuida.bar_spring.model.Pedido;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class FacturaDetalleServiceImpl {
+
+    @Autowired
+    private FacturaDetalleRepository facturaDetalleRepository;
+
+    @Autowired
+    private FacturaRepository facturaRepository;
+
+    @Autowired
+    private PedidoRepository pedidoRepository;
+
+    @Override
+    public List<FacturaDetalle> findAll(){return  facturaDetalleRepository.findAll();}
+
+    @Override
+    public FacturaDetalle findOne(int id){
+        Optional<FacturaDetalle> facturaDetalle = facturaDetalleRepository.findById(1);
+        return facturaDetalle.orElse(null);
+    }
+
+    @Override
+    public FacturaDetalle save(FacturaDetalle facturaDetalle) {return  facturaDetalleRepository.save(facturaDetalle);}
+
+    @Override
+    public FacturaDetalle update(int id, int idFactura, int idPedido, FacturaDetalle facturaDetalle){
+        FacturaDetalle facturaDetalleExistente = findOne(id);
+
+        Optional<Factura> facturaExistente = facturaRepository.findById(idFactura);
+        Optional< Pedido> pedidoExistente = pedidoRepository.findAllById(idPedido);
+
+        if (facturaDetalleExistente == null){
+            return null;
+        }
+
+        facturaDetalleExistente.setCantidad(facturaDetalle.getCantidad());
+        facturaDetalleExistente.setSubtotal(facturaDetalle.getSubtotal());
+        facturaDetalleExistente.setFactura(facturaExistente.orElse(null));
+        facturaDetalleExistente.setPedido(pedidoExistente.orElse(null));
+
+        return facturaDetalleRepository.save(facturaDetalleExistente);
+
+    }
+
+    @Override
+    public void delete(int id){
+        if (facturaDetalleRepository.existsById(id)){
+            facturaDetalleRepository.deleteById(id);
+        }
+    }
+
+
+
+}
