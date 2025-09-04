@@ -13,6 +13,9 @@ public class Producto {
     @Column(name="id_producto")
     private int idProducto;
 
+    @Column(name="portada")
+    private String portada;
+
     @Column(name="nombre_producto")
     private String nombreProducto;
 
@@ -29,9 +32,10 @@ public class Producto {
 
     public Producto(){}
 
-    public Producto(int idProducto,  String nombreProducto, Double precio, int stock, Categoria categoria) {
+    public Producto(int idProducto, String portada, String nombreProducto, Double precio, int stock, Categoria categoria) {
         this.idProducto = idProducto;
-        this.nombreProducto =  nombreProducto;
+        this.portada = portada;
+        this.nombreProducto = nombreProducto;
         this.precio = precio;
         this.stock = stock;
         this.categoria = categoria;
@@ -43,6 +47,14 @@ public class Producto {
 
     public void setIdProducto(int idProducto) {
         this.idProducto = idProducto;
+    }
+
+    public String getPortada() {
+        return portada;
+    }
+
+    public void setPortada(String portada) {
+        this.portada = portada;
     }
 
     public String getNombreProducto() {
@@ -77,19 +89,15 @@ public class Producto {
         this.categoria = categoria;
     }
 
-    // Método seguro para obtener el nombre de la categoría
-    public String getNombreCategoria() {
-        return categoria != null ? categoria.getNombreCategoria() : "Sin categoría";
-    }
-
     @Override
     public String toString() {
         return "Producto{" +
                 "idProducto=" + idProducto +
+                ", portada='" + portada + '\'' +
                 ", nombreProducto='" + nombreProducto + '\'' +
                 ", precio=" + precio +
                 ", stock=" + stock +
-                ", categoria=" + getNombreCategoria() +
+                ", categoria=" + categoria +
                 '}';
     }
 }

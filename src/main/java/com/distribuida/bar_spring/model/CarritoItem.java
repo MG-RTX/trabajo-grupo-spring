@@ -34,7 +34,7 @@ public class CarritoItem {
     private Integer cantidad;
 
     @Column(name = "precio_unitario", precision = 12, scale = 2)
-    private BigDecimal precioUnitorio;
+    private BigDecimal precioUnitario;
 
     @Column(name = "total", precision = 12, scale = 2)
     private BigDecimal total;
@@ -46,9 +46,9 @@ public class CarritoItem {
     }
 
     public void calcTotal() {
-        if (precioUnitorio == null) precioUnitorio = BigDecimal.ZERO;
+        if (precioUnitario == null) precioUnitario = BigDecimal.ZERO;
         if (cantidad == null) cantidad = 0;
-        total = precioUnitorio.multiply(BigDecimal.valueOf(cantidad))
+        total = precioUnitario.multiply(BigDecimal.valueOf(cantidad))
                 .setScale(2, RoundingMode.HALF_UP);
     }
 
@@ -92,12 +92,12 @@ public class CarritoItem {
         this.cantidad = cantidad;
     }
 
-    public BigDecimal getPrecioUnitorio() {
-        return precioUnitorio;
+    public BigDecimal getPrecioUnitario() {
+        return precioUnitario;
     }
 
-    public void setPrecioUnitorio(BigDecimal precioUnitorio) {
-        this.precioUnitorio = precioUnitorio;
+    public void setPrecioUnitario(BigDecimal precioUnitario) {
+        this.precioUnitario = precioUnitario;
     }
 
     public BigDecimal getTotal() {

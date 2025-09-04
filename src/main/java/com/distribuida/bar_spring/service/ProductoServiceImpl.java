@@ -38,6 +38,7 @@ public class ProductoServiceImpl implements ProductoService{
         }
 
         productoexistente.setNombreProducto(productonuevo.getNombreProducto());
+        productoexistente.setPortada(productonuevo.getPortada());
         productoexistente.setPrecio(productonuevo.getPrecio());
         productoexistente.setStock(productonuevo.getStock());
         productoexistente.setCategoria(productonuevo.getCategoria());
