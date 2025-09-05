@@ -13,7 +13,7 @@ public interface PedidoRepository extends JpaRepository<Pedido, Integer> {
 
     List<Pedido> findByTotalGreaterThan(Double totalMinimo);
 
-    List<Pedido> findByClienteIdCliente(int idCliente);  // Esto está correcto si la relación se llama "cliente"
+    List<Pedido> findByClienteIdCliente(int idCliente);
 
-    Optional<Pedido> findAllById(int idPedido);
+    Optional<Pedido> findAllByIdPedido(int idPedido);
 }

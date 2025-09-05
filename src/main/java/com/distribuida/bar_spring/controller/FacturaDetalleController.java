@@ -47,7 +47,7 @@ public class FacturaDetalleController {
         return ResponseEntity.ok(facturaDetalleActualizada);
     }
 
-    @DeleteMapping("{/id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable int id){
         facturaDetalleService.delete(id);
         return ResponseEntity.noContent().build();
